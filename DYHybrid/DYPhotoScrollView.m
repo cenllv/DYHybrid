@@ -10,26 +10,40 @@
 
 static NSString *sObservedPath = @"image";
 
+@interface DYPhotoScrollView()
+
+//init the photo scroll view
+//set the delegate, add observer, add the imageView subview
+- (void)initPhotoScrollView;
+
+//display the image
+- (void)showImage;
+
+//centralize the zoomed view in the zooming process
+- (void)centerScrollViewContents;
+
+@end
+
 @implementation DYPhotoScrollView
 
 - (instancetype)init
 {
     self = [super init];
-    [self initImageView];
+    [self initPhotoScrollView];
     return  self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    [self initImageView];
+    [self initPhotoScrollView];
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    [self initImageView];
+    [self initPhotoScrollView];
     return self;
 }
 
@@ -38,7 +52,39 @@ static NSString *sObservedPath = @"image";
     [self.zoomedImageView removeObserver:self forKeyPath:sObservedPath];
 }
 
-- (void)initImageView
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:sObservedPath]) {
+        [self showImage];
+    }
+}
+
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.zoomedImageView;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    [self centerScrollViewContents];
+}
+
+#pragma mark -
+#pragma mark public
+
+- (void)resetViewLayoutAfterRotateOrientation
+{
+    [self showImage];
+}
+
+
+#pragma mark -
+#pragma mark private
+
+- (void)initPhotoScrollView
 {
     self.delegate = self;
     self.zoomedImageView = [[UIImageView alloc]initWithFrame:self.bounds];
@@ -46,12 +92,6 @@ static NSString *sObservedPath = @"image";
     [self.zoomedImageView addObserver:self forKeyPath:sObservedPath options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:sObservedPath]) {
-        [self showImage];
-    }
-}
 
 - (void)showImage
 {
@@ -78,18 +118,6 @@ static NSString *sObservedPath = @"image";
         self.zoomScale = minScale;
         [self centerScrollViewContents];
     }
-}
-
-
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return self.zoomedImageView;
-}
-
-
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    [self centerScrollViewContents];
 }
 
 - (void)centerScrollViewContents {

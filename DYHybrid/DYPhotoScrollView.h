@@ -21,6 +21,8 @@
  Use SDWebImage to set image, refer to https://github.com/DYun/SDWebImage/blob/master/README.md, however, it is better
  to set a placholder
  
+ 
+ 
  */
 
 
@@ -28,5 +30,7 @@
 
 //The image view will be zoomed
 @property (strong, nonatomic) IBOutlet UIImageView *zoomedImageView;
+
+- (void) resetViewLayoutAfterRotateOrientation;
 
 @end
