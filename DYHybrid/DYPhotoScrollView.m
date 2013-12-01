@@ -87,6 +87,7 @@ static NSString *sObservedPath = @"image";
 - (void)initPhotoScrollView
 {
     self.delegate = self;
+    self.autoresizingMask = 0xFF; //include all resizing mask
     self.zoomedImageView = [[UIImageView alloc]initWithFrame:self.bounds];
     [self addSubview:self.zoomedImageView];
     [self.zoomedImageView addObserver:self forKeyPath:sObservedPath options:NSKeyValueObservingOptionNew context:nil];
