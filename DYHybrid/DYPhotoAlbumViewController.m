@@ -62,6 +62,7 @@
         startX += width;
         DYPhotoScrollView *n = [[DYPhotoScrollView alloc]initWithFrame:CGRectMake(startX, 0, width, height)];
         [self.albumScrollView addSubview:n];
+        singlePhotoScrollViews = @[p, c, n];
     }
 }
 
@@ -74,9 +75,9 @@
 - (void)filePage
 {
     [self resetPrevAndNextPage];
-    DYPhotoScrollView *p = singlePhotoScrollViews[prevPage];
-    DYPhotoScrollView *c = singlePhotoScrollViews[self.page];
-    DYPhotoScrollView *n = singlePhotoScrollViews[nextPage];
+    DYPhotoScrollView *p = singlePhotoScrollViews[0];
+    DYPhotoScrollView *c = singlePhotoScrollViews[1];
+    DYPhotoScrollView *n = singlePhotoScrollViews[2];
     p.zoomedImageView.image = self.images[prevPage];
     c.zoomedImageView.image = self.images[self.page];
     n.zoomedImageView.image = self.images[nextPage];
