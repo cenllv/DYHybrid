@@ -25,3 +25,7 @@ DYPhotoScrollView
 A photo viewer for zooming out and zooming in. The max zoom scale is immutable, set to 1. The min zoom scale is min(imageWidth/width, imageHeight/height), and of couse should not bigger than 1.0.
 <br/>
 Call resetViewLayoutAfterRotateOrientation for view controller rotate
+
+DYPhotoAlbumViewController
+==========================
+A photo view controller to display several images, scroll and paging.
