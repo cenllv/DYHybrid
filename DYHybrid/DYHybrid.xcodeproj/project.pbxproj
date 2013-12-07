@@ -28,8 +28,6 @@
 		D6D48DF7184A36F900A0B04B /* DYPhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D48DF5184A36F900A0B04B /* DYPhotoScrollView.m */; };
 		D6FC944C18535BC6009F41CA /* DYPhotoAlbumViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FC944A18535BC6009F41CA /* DYPhotoAlbumViewController.h */; };
 		D6FC944D18535BC6009F41CA /* DYPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FC944B18535BC6009F41CA /* DYPhotoAlbumViewController.m */; };
-		D6FC9450185369C9009F41CA /* DYGeometryUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FC944E185369C9009F41CA /* DYGeometryUtil.h */; };
-		D6FC9451185369C9009F41CA /* DYGeometryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FC944F185369C9009F41CA /* DYGeometryUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +44,6 @@
 		D6D48DF5184A36F900A0B04B /* DYPhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYPhotoScrollView.m; sourceTree = SOURCE_ROOT; };
 		D6FC944A18535BC6009F41CA /* DYPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYPhotoAlbumViewController.h; sourceTree = SOURCE_ROOT; };
 		D6FC944B18535BC6009F41CA /* DYPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYPhotoAlbumViewController.m; sourceTree = SOURCE_ROOT; };
-		D6FC944E185369C9009F41CA /* DYGeometryUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYGeometryUtil.h; sourceTree = SOURCE_ROOT; };
-		D6FC944F185369C9009F41CA /* DYGeometryUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYGeometryUtil.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +110,6 @@
 			children = (
 				D6D01710184A1C6F006BEF15 /* DYDateUtil.h */,
 				D6D01711184A1C6F006BEF15 /* DYDateUtil.m */,
-				D6FC944E185369C9009F41CA /* DYGeometryUtil.h */,
-				D6FC944F185369C9009F41CA /* DYGeometryUtil.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -125,8 +119,6 @@
 			children = (
 				D6D48DF4184A36F900A0B04B /* DYPhotoScrollView.h */,
 				D6D48DF5184A36F900A0B04B /* DYPhotoScrollView.m */,
-				D6FC944A18535BC6009F41CA /* DYPhotoAlbumViewController.h */,
-				D6FC944B18535BC6009F41CA /* DYPhotoAlbumViewController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -134,6 +126,8 @@
 		D6FC944518535AFC009F41CA /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				D6FC944A18535BC6009F41CA /* DYPhotoAlbumViewController.h */,
+				D6FC944B18535BC6009F41CA /* DYPhotoAlbumViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -146,7 +140,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6BF8180184A20A000E64AED /* DYHybrid.h in Headers */,
-				D6FC9450185369C9009F41CA /* DYGeometryUtil.h in Headers */,
 				D6FC944C18535BC6009F41CA /* DYPhotoAlbumViewController.h in Headers */,
 				D6D48DF6184A36F900A0B04B /* DYPhotoScrollView.h in Headers */,
 				D6D01714184A1E3F006BEF15 /* DYDateUtil.h in Headers */,
@@ -236,7 +229,6 @@
 			files = (
 				D6D01712184A1C6F006BEF15 /* DYDateUtil.m in Sources */,
 				D6D48DF7184A36F900A0B04B /* DYPhotoScrollView.m in Sources */,
-				D6FC9451185369C9009F41CA /* DYGeometryUtil.m in Sources */,
 				D6FC944D18535BC6009F41CA /* DYPhotoAlbumViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
