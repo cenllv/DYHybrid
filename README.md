@@ -26,6 +26,10 @@ A photo viewer for zooming out and zooming in. The max zoom scale is immutable, 
 <br/>
 Call resetViewLayoutAfterRotateOrientation for view controller rotate
 
+DYCalendarView
+================
+A simple implementation of Calendar.
+
 DYPhotoAlbumViewController
 ==========================
 A photo view controller to display several images, scroll and paging.
