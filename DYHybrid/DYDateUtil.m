@@ -22,4 +22,13 @@
     return [self getDateStrFromDate:[NSDate dateWithTimeIntervalSince1970:timeInterval] format:format];
 }
 
++ (NSDate *)dayWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
+{
+    NSDateComponents *components = [[NSDateComponents alloc]init];
+    [components setYear:year];
+    [components setMonth:month];
+    [components setDay:day];
+    return [[NSCalendar currentCalendar]dateFromComponents:components];
+}
+
 @end

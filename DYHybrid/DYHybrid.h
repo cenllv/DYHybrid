@@ -13,3 +13,4 @@
 
 //view headers
 #import <DYHybrid/DYPhotoScrollView.h>
+#import <DYHybrid/DYCalendarView.h>
