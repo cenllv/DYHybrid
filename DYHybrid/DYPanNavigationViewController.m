@@ -1,6 +1,5 @@
 //
 //  DYTNavigationViewController.m
-//  ios-test
 //
 //  Created by dyun on 3/6/14.
 //  Copyright (c) 2014 liudanyun@gmail.com. All rights reserved.
@@ -38,11 +37,6 @@ static CGFloat screenshotGap = 10.0f;
 {
     [super viewDidAppear:animated];
     originFrame = self.view.frame;
-    [self logViewHierarchy:self.view.window level:0];
-}
-
-- (void)logViewHierarchy:(UIView *)view level:(NSInteger)level
-{
     UIView * iv = [self.view.subviews firstObject];
     UIPanGestureRecognizer *ng = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panning:)];
     [iv addGestureRecognizer:ng];
@@ -86,7 +80,7 @@ static CGFloat screenshotGap = 10.0f;
         return;
     }
     CGPoint point = [ng translationInView:self.view];
-    if (ng.state == UIGestureRecognizerStateChanged && point.x > 0) {
+    if (ng.state == UIGestureRecognizerStateChanged && point.x > 0) { //only support back action
         CGRect f = self.view.frame;
         f.origin.x = point.x;
         self.view.frame = f;
@@ -95,10 +89,13 @@ static CGFloat screenshotGap = 10.0f;
             [self updateSceenshotWithPanX:f.origin.x];
         }
     } else if (ng.state == UIGestureRecognizerStateEnded) {
-        if (CGRectGetMinX(self.view.frame) < CGRectGetWidth(self.view.frame)/2) {
-            [UIView animateWithDuration:0.3 animations:^{
-                self.view.frame = originFrame;
-            }];
+        if (CGRectGetMinX(self.view.frame) < CGRectGetWidth(originFrame)/2) {
+            [UIView animateWithDuration:0.3 delay:0.0
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 self.view.frame = originFrame;
+                             } completion:^(BOOL finished) {
+                             }];
         } else {
             [self panBack];
         }
@@ -112,7 +109,7 @@ static CGFloat screenshotGap = 10.0f;
         [UIView animateWithDuration:0.3 delay:0.0
                             options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{
-                             screenshot.frame = CGRectMake(0, CGRectGetMinY(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+                             screenshot.frame = CGRectMake(0, CGRectGetMinY(originFrame), CGRectGetWidth(originFrame), CGRectGetHeight(originFrame));
                              self.view.frame = CGRectOffset(originFrame, CGRectGetWidth(originFrame), 0);
                          } completion:^(BOOL finished) {
                              [self popViewControllerAnimated:NO];
@@ -126,7 +123,7 @@ static CGFloat screenshotGap = 10.0f;
     CGFloat ratio = x/ CGRectGetWidth(self.view.frame);
     CGFloat delta = screenshotGap *  (1 - ratio);
     UIView *screenshot = [self.view.window.subviews firstObject];
-    screenshot.frame = CGRectMake(delta, delta, CGRectGetWidth(self.view.frame) - 2 *delta, CGRectGetHeight(self.view.frame) - 2 * delta);
+    screenshot.frame = CGRectMake(delta, delta, CGRectGetWidth(originFrame) - 2 *delta, CGRectGetHeight(originFrame) - 2 * delta);
 }
 
 - (void)didReceiveMemoryWarning
