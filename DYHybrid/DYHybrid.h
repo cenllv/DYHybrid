@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 
 //utility headers
+#import <DYHybrid/DYConstant.h>
 #import <DYHybrid/DYDateUtil.h>
 
 //view headers
 #import <DYHybrid/DYPhotoScrollView.h>
 #import <DYHybrid/DYCalendarView.h>
-#import <HYHybrid/DYConstant.h>
+
+//view controller headers
 #import <DYHybrid/DYPanNavigationViewController.h>
+#import <DYHybrid/DYPhotoAlbumViewController.h>
