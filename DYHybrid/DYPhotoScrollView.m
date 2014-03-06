@@ -12,15 +12,15 @@ static NSString *sObservedPath = @"image";
 
 @interface DYPhotoScrollView()
 
+//The image view will be zoomed
+@property (strong, nonatomic) UIImageView *zoomedImageView;
+
 //init the photo scroll view
 //set the delegate, add observer, add the imageView subview
 - (void)initPhotoScrollView;
 
 //display the image
 - (void)showImage;
-
-//centralize the zoomed view in the zooming process
-- (void)centerScrollViewContents;
 
 @end
 
@@ -47,18 +47,11 @@ static NSString *sObservedPath = @"image";
     return self;
 }
 
-- (void)dealloc
+- (void)displayImage:(UIImage *)image
 {
-    [self.zoomedImageView removeObserver:self forKeyPath:sObservedPath];
+    self.zoomedImageView.image = image;
+    [self showImage];
 }
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:sObservedPath]) {
-        [self showImage];
-    }
-}
-
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate
@@ -68,7 +61,8 @@ static NSString *sObservedPath = @"image";
     return self.zoomedImageView;
 }
 
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+- (void)layoutSubviews
+{
     [self centerScrollViewContents];
 }
 
@@ -90,7 +84,6 @@ static NSString *sObservedPath = @"image";
     self.autoresizingMask = 0xFF; //include all resizing mask
     self.zoomedImageView = [[UIImageView alloc]initWithFrame:self.bounds];
     [self addSubview:self.zoomedImageView];
-    [self.zoomedImageView addObserver:self forKeyPath:sObservedPath options:NSKeyValueObservingOptionNew context:nil];
 }
 
 
@@ -100,13 +93,11 @@ static NSString *sObservedPath = @"image";
     if (zoomedImage) {
         //for some uncertain reason, if you reuse the zoomedImageView, the scale of the second image will be incorrect.
         //todo: reuse the image view
-        [self.zoomedImageView removeObserver:self forKeyPath:sObservedPath];
         [self.zoomedImageView removeFromSuperview];
         self.zoomedImageView = [[UIImageView alloc]initWithImage:zoomedImage];
         self.zoomedImageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=zoomedImage.size};
         self.zoomedImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:self.zoomedImageView];
-        [self.zoomedImageView addObserver:self forKeyPath:sObservedPath options:NSKeyValueObservingOptionNew context:nil];
         self.contentSize = zoomedImage.size;
         self.contentOffset = CGPointZero;
         CGRect scrollViewFrame = self.frame;

@@ -21,16 +21,16 @@
  Use SDWebImage to set image, refer to https://github.com/DYun/SDWebImage/blob/master/README.md, however, it is better
  to set a placholder
  
- 
- 
  */
 
 
 @interface DYPhotoScrollView : UIScrollView<UIScrollViewDelegate>
 
-//The image view will be zoomed
-@property (strong, nonatomic) IBOutlet UIImageView *zoomedImageView;
-
 - (void) resetViewLayoutAfterRotateOrientation;
+
+- (void) displayImage:(UIImage *)image;
+
+//centralize the zoomed view in the zooming process
+- (void)centerScrollViewContents;
 
 @end

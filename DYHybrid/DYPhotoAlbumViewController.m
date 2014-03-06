@@ -78,9 +78,9 @@
     DYPhotoScrollView *p = singlePhotoScrollViews[0];
     DYPhotoScrollView *c = singlePhotoScrollViews[1];
     DYPhotoScrollView *n = singlePhotoScrollViews[2];
-    p.zoomedImageView.image = self.images[prevPage];
-    c.zoomedImageView.image = self.images[self.page];
-    n.zoomedImageView.image = self.images[nextPage];
+    [p displayImage:self.images[prevPage]];
+    [c displayImage:self.images[self.page]];
+    [n displayImage:self.images[nextPage]];
     CGRect bounds = self.albumScrollView.bounds;
     bounds.origin.x = CGRectGetWidth(bounds);
     [self.albumScrollView scrollRectToVisible:bounds animated:NO];

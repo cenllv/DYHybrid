@@ -21,8 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		D602A0A618C83D7500085152 /* DYConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = D602A0A418C83D7500085152 /* DYConstant.h */; };
+		D602A0A718C83D7500085152 /* DYConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D602A0A518C83D7500085152 /* DYConstant.m */; };
 		D622522B18672A0A00C5C909 /* DYCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = D622522918672A0A00C5C909 /* DYCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D622522C18672A0A00C5C909 /* DYCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D622522A18672A0A00C5C909 /* DYCalendarView.m */; };
+		D640446518C8DEB600FDC615 /* DYPanNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D640446318C8DEB600FDC615 /* DYPanNavigationViewController.h */; };
+		D640446618C8DEB600FDC615 /* DYPanNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D640446418C8DEB600FDC615 /* DYPanNavigationViewController.m */; };
 		D6BF8180184A20A000E64AED /* DYHybrid.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BF817F184A20A000E64AED /* DYHybrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6D01712184A1C6F006BEF15 /* DYDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D01711184A1C6F006BEF15 /* DYDateUtil.m */; };
 		D6D01714184A1E3F006BEF15 /* DYDateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D01710184A1C6F006BEF15 /* DYDateUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,8 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D602A0A418C83D7500085152 /* DYConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYConstant.h; sourceTree = SOURCE_ROOT; };
+		D602A0A518C83D7500085152 /* DYConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYConstant.m; sourceTree = SOURCE_ROOT; };
 		D622522918672A0A00C5C909 /* DYCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCalendarView.h; sourceTree = SOURCE_ROOT; };
 		D622522A18672A0A00C5C909 /* DYCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCalendarView.m; sourceTree = SOURCE_ROOT; };
+		D640446318C8DEB600FDC615 /* DYPanNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYPanNavigationViewController.h; sourceTree = SOURCE_ROOT; };
+		D640446418C8DEB600FDC615 /* DYPanNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYPanNavigationViewController.m; sourceTree = SOURCE_ROOT; };
 		D68A2FD1184B03C2001B03C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D68A2FD3184B03C2001B03C9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D68A2FD5184B03C2001B03C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -105,6 +113,8 @@
 				D6D48DF3184A36D300A0B04B /* view */,
 				D6D48DF2184A36C500A0B04B /* util */,
 				D6BF817F184A20A000E64AED /* DYHybrid.h */,
+				D602A0A418C83D7500085152 /* DYConstant.h */,
+				D602A0A518C83D7500085152 /* DYConstant.m */,
 			);
 			path = DYHybrid;
 			sourceTree = "<group>";
@@ -132,6 +142,8 @@
 		D6FC944518535AFC009F41CA /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				D640446318C8DEB600FDC615 /* DYPanNavigationViewController.h */,
+				D640446418C8DEB600FDC615 /* DYPanNavigationViewController.m */,
 				D6FC944A18535BC6009F41CA /* DYPhotoAlbumViewController.h */,
 				D6FC944B18535BC6009F41CA /* DYPhotoAlbumViewController.m */,
 			);
@@ -148,6 +160,8 @@
 				D622522B18672A0A00C5C909 /* DYCalendarView.h in Headers */,
 				D6FC944C18535BC6009F41CA /* DYPhotoAlbumViewController.h in Headers */,
 				D6BF8180184A20A000E64AED /* DYHybrid.h in Headers */,
+				D640446518C8DEB600FDC615 /* DYPanNavigationViewController.h in Headers */,
+				D602A0A618C83D7500085152 /* DYConstant.h in Headers */,
 				D6D48DF6184A36F900A0B04B /* DYPhotoScrollView.h in Headers */,
 				D6D01714184A1E3F006BEF15 /* DYDateUtil.h in Headers */,
 			);
@@ -234,7 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D602A0A718C83D7500085152 /* DYConstant.m in Sources */,
 				D6D01712184A1C6F006BEF15 /* DYDateUtil.m in Sources */,
+				D640446618C8DEB600FDC615 /* DYPanNavigationViewController.m in Sources */,
 				D622522C18672A0A00C5C909 /* DYCalendarView.m in Sources */,
 				D6D48DF7184A36F900A0B04B /* DYPhotoScrollView.m in Sources */,
 				D6FC944D18535BC6009F41CA /* DYPhotoAlbumViewController.m in Sources */,

@@ -14,3 +14,5 @@
 //view headers
 #import <DYHybrid/DYPhotoScrollView.h>
 #import <DYHybrid/DYCalendarView.h>
+#import <HYHybrid/DYConstant.h>
+#import <DYHybrid/DYPanNavigationViewController.h>
