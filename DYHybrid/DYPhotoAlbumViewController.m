@@ -54,6 +54,7 @@
 - (void)initSinglePhotoScrollViews
 {
     self.albumScrollView.delegate = self;
+    self.albumScrollView.pagingEnabled = YES;
     if (singlePhotoScrollViews.count == 0) {
         self.albumScrollView.contentSize = CGSizeMake(3 * CGRectGetWidth(self.albumScrollView.frame), CGRectGetHeight(self.albumScrollView.frame));
         CGRect bounds = self.albumScrollView.bounds;

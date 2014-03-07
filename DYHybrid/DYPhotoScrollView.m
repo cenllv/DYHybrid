@@ -58,8 +58,15 @@
 
 - (void)displayImage:(UIImage *)image
 {
+    if (_zoomedImageView) {
+        //when you display a different image and reset the frame of the image view,
+        //scroll view will set the scale and resize the image view frame in a weird way.
+        //so remove the current view and replace a new one.
+        [_zoomedImageView removeFromSuperview];
+    }
+    _zoomedImageView = [[UIImageView alloc]initWithFrame:(CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size}];
     _zoomedImageView.image = image;
-    _zoomedImageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
+    [self addSubview:_zoomedImageView];
     self.contentSize = image.size;
     self.contentOffset = CGPointZero;
     CGFloat scaleWidth = CGRectGetWidth(self.frame) / self.contentSize.width;
