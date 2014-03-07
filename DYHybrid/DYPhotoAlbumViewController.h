@@ -16,14 +16,12 @@
  *
  */
 
-@protocol DYPhotoAlbumViweControllerDelegate <NSObject>
-
-@optional
-
-@end
-
-@interface DYPhotoAlbumViewController : UIViewController
+@interface DYPhotoAlbumViewController : UIViewController<UIScrollViewDelegate>
+//
 @property (strong, nonatomic) IBOutlet UIScrollView *albumScrollView;
-@property (strong, nonatomic) NSArray *images;
-@property (nonatomic) NSInteger page;
+
+- (void)displayImages:(NSArray *)images currentPage:(NSInteger)currentPage;
+//the current index of the displayed image;
+@property (nonatomic, readonly) NSInteger currentPage;
+
 @end

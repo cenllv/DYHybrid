@@ -8,19 +8,9 @@
 
 #import "DYPhotoScrollView.h"
 
-static NSString *sObservedPath = @"image";
-
 @interface DYPhotoScrollView()
 
-//The image view will be zoomed
-@property (strong, nonatomic) UIImageView *zoomedImageView;
-
-//init the photo scroll view
-//set the delegate, add observer, add the imageView subview
 - (void)initPhotoScrollView;
-
-//display the image
-- (void)showImage;
 
 @end
 
@@ -47,12 +37,6 @@ static NSString *sObservedPath = @"image";
     return self;
 }
 
-- (void)displayImage:(UIImage *)image
-{
-    self.zoomedImageView.image = image;
-    [self showImage];
-}
-
 #pragma mark -
 #pragma mark UIScrollViewDelegate
 
@@ -60,6 +44,9 @@ static NSString *sObservedPath = @"image";
 {
     return self.zoomedImageView;
 }
+
+#pragma mark -
+#pragma mark override
 
 - (void)layoutSubviews
 {
@@ -69,11 +56,21 @@ static NSString *sObservedPath = @"image";
 #pragma mark -
 #pragma mark public
 
-- (void)resetViewLayoutAfterRotateOrientation
+- (void)displayImage:(UIImage *)image
 {
-    [self showImage];
+    _zoomedImageView.image = image;
+    _zoomedImageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
+    self.contentSize = image.size;
+    self.contentOffset = CGPointZero;
+    CGFloat scaleWidth = CGRectGetWidth(self.frame) / self.contentSize.width;
+    CGFloat scaleHeight = CGRectGetHeight(self.frame) / self.contentSize.height;
+    CGFloat minScale = MIN(scaleWidth, scaleHeight);
+    minScale = MIN(minScale, 1.0); //in case the min scale > 1.0;
+    self.minimumZoomScale = minScale;
+    self.maximumZoomScale = 1.0;
+    self.zoomScale = minScale;
+    [self centerScrollViewContents];
 }
-
 
 #pragma mark -
 #pragma mark private
@@ -82,34 +79,10 @@ static NSString *sObservedPath = @"image";
 {
     self.delegate = self;
     self.autoresizingMask = 0xFF; //include all resizing mask
-    self.zoomedImageView = [[UIImageView alloc]initWithFrame:self.bounds];
+    _zoomedImageView = [[UIImageView alloc]initWithFrame:self.bounds];
+    _zoomedImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.clipsToBounds = YES;
     [self addSubview:self.zoomedImageView];
-}
-
-
-- (void)showImage
-{
-    __strong UIImage *zoomedImage = self.zoomedImageView.image;
-    if (zoomedImage) {
-        //for some uncertain reason, if you reuse the zoomedImageView, the scale of the second image will be incorrect.
-        //todo: reuse the image view
-        [self.zoomedImageView removeFromSuperview];
-        self.zoomedImageView = [[UIImageView alloc]initWithImage:zoomedImage];
-        self.zoomedImageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=zoomedImage.size};
-        self.zoomedImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:self.zoomedImageView];
-        self.contentSize = zoomedImage.size;
-        self.contentOffset = CGPointZero;
-        CGRect scrollViewFrame = self.frame;
-        CGFloat scaleWidth = scrollViewFrame.size.width / self.contentSize.width;
-        CGFloat scaleHeight = scrollViewFrame.size.height / self.contentSize.height;
-        CGFloat minScale = MIN(scaleWidth, scaleHeight);
-        minScale = MIN(minScale, 1.0); //in case the min scale > 1.0;
-        self.minimumZoomScale = minScale;
-        self.maximumZoomScale = 1.0;
-        self.zoomScale = minScale;
-        [self centerScrollViewContents];
-    }
 }
 
 - (void)centerScrollViewContents {

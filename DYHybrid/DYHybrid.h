@@ -11,6 +11,7 @@
 //utility headers
 #import <DYHybrid/DYConstant.h>
 #import <DYHybrid/DYDateUtil.h>
+#import  <DYHybrid/DYLogUtil.h>
 
 //view headers
 #import <DYHybrid/DYPhotoScrollView.h>

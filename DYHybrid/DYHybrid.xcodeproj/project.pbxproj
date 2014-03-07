@@ -28,6 +28,8 @@
 		D640446518C8DEB600FDC615 /* DYPanNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D640446318C8DEB600FDC615 /* DYPanNavigationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D640446618C8DEB600FDC615 /* DYPanNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D640446418C8DEB600FDC615 /* DYPanNavigationViewController.m */; };
 		D6BF8180184A20A000E64AED /* DYHybrid.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BF817F184A20A000E64AED /* DYHybrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6C0912F18C97702004011AE /* DYLogUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C0912D18C97702004011AE /* DYLogUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6C0913018C97702004011AE /* DYLogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C0912E18C97702004011AE /* DYLogUtil.m */; };
 		D6D01712184A1C6F006BEF15 /* DYDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D01711184A1C6F006BEF15 /* DYDateUtil.m */; };
 		D6D01714184A1E3F006BEF15 /* DYDateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D01710184A1C6F006BEF15 /* DYDateUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6D48DF6184A36F900A0B04B /* DYPhotoScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D48DF4184A36F900A0B04B /* DYPhotoScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,6 +49,8 @@
 		D68A2FD3184B03C2001B03C9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D68A2FD5184B03C2001B03C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6BF817F184A20A000E64AED /* DYHybrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYHybrid.h; sourceTree = SOURCE_ROOT; };
+		D6C0912D18C97702004011AE /* DYLogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYLogUtil.h; sourceTree = SOURCE_ROOT; };
+		D6C0912E18C97702004011AE /* DYLogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYLogUtil.m; sourceTree = SOURCE_ROOT; };
 		D6D016FB184A1C3A006BEF15 /* DYHybrid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DYHybrid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D01701184A1C3A006BEF15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6D01702184A1C3A006BEF15 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -124,6 +128,8 @@
 			children = (
 				D6D01710184A1C6F006BEF15 /* DYDateUtil.h */,
 				D6D01711184A1C6F006BEF15 /* DYDateUtil.m */,
+				D6C0912D18C97702004011AE /* DYLogUtil.h */,
+				D6C0912E18C97702004011AE /* DYLogUtil.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -163,6 +169,7 @@
 				D640446518C8DEB600FDC615 /* DYPanNavigationViewController.h in Headers */,
 				D602A0A618C83D7500085152 /* DYConstant.h in Headers */,
 				D6D48DF6184A36F900A0B04B /* DYPhotoScrollView.h in Headers */,
+				D6C0912F18C97702004011AE /* DYLogUtil.h in Headers */,
 				D6D01714184A1E3F006BEF15 /* DYDateUtil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,7 +246,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#       ============Script Start==============\nif [ \"${ACTION}\" = \"build\" ]\nthen\n# Set the target folders and the final framework product.\nINSTALL_DIR=${SYMROOT}/DYHybrid.framework\nDEVICE_DIR=${SYMROOT}/Release-iphoneos\nSIMULATOR_DIR=${SYMROOT}/Release-iphonesimulator\n\n# Create and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}/DYHybrid\"\n\n# Copy the header files to the final product folder.\nditto \"${DEVICE_DIR}/DYHybrid.framework/Headers\" \"${INSTALL_DIR}/Headers\"\n\n# Use the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/DYHybrid.framework/DYHybrid\" \"${SIMULATOR_DIR}/DYHybrid.framework/DYHybrid\" -output \"${INSTALL_DIR}/DYHybrid\"\n\ncp -rf ${SYMROOT}/DYHybrid.framework /Users/dyun/Desktop/\n\nzip -r ${SYMROOT}/DYHybrid.framework.zip ${SYMROOT}/DYHybrid.framework\n\ncp -rf ${SYMROOT}/DYHybrid.framework.zip /Users/dyun/Desktop\n\nfi\n#       ============Script End==============";
+			shellScript = "#       ============Script Start==============\nif [ \"${ACTION}\" = \"build\" ]\nthen\n# Set the target folders and the final framework product.\nINSTALL_DIR=${SYMROOT}/DYHybrid.framework\nDEVICE_DIR=${SYMROOT}/Release-iphoneos\nSIMULATOR_DIR=${SYMROOT}/Release-iphonesimulator\n\n# Create and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}/DYHybrid\"\n\n# Copy the header files to the final product folder.\nditto \"${DEVICE_DIR}/DYHybrid.framework/Headers\" \"${INSTALL_DIR}/Headers\"\n\n# Use the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/DYHybrid.framework/DYHybrid\" \"${SIMULATOR_DIR}/DYHybrid.framework/DYHybrid\" -output \"${INSTALL_DIR}/DYHybrid\"\n\ncp -rf ${SYMROOT}/DYHybrid.framework /Users/dyun/Desktop/\n\ncp -rf ${SYMROOT}/DYHybrid.framework /Users/dyun/Program/ios-test/\n\nzip -r ${SYMROOT}/DYHybrid.framework.zip ${SYMROOT}/DYHybrid.framework\n\ncp -rf ${SYMROOT}/DYHybrid.framework.zip /Users/dyun/Desktop\n\nfi\n#       ============Script End==============";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -253,6 +260,7 @@
 				D640446618C8DEB600FDC615 /* DYPanNavigationViewController.m in Sources */,
 				D622522C18672A0A00C5C909 /* DYCalendarView.m in Sources */,
 				D6D48DF7184A36F900A0B04B /* DYPhotoScrollView.m in Sources */,
+				D6C0913018C97702004011AE /* DYLogUtil.m in Sources */,
 				D6FC944D18535BC6009F41CA /* DYPhotoAlbumViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
