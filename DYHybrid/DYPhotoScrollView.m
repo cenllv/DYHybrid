@@ -58,6 +58,14 @@
 
 - (void)displayImage:(UIImage *)image
 {
+    [self displayImage:image minScale:0.0 maxScale:0.0];
+}
+
+- (void)displayImage:(UIImage *)image minScale:(CGFloat)minScale maxScale:(CGFloat)maxScale
+{
+    if (maxScale < minScale) {
+        maxScale = minScale;
+    }
     if (_zoomedImageView) {
         //when you display a different image and reset the frame of the image view,
         //scroll view will set the scale and resize the image view frame in a weird way.
@@ -66,17 +74,31 @@
     }
     _zoomedImageView = [[UIImageView alloc]initWithFrame:(CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size}];
     _zoomedImageView.image = image;
+    UITapGestureRecognizer *gz = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+    [_zoomedImageView addGestureRecognizer:gz];
     [self addSubview:_zoomedImageView];
     self.contentSize = image.size;
     self.contentOffset = CGPointZero;
-    CGFloat scaleWidth = CGRectGetWidth(self.frame) / self.contentSize.width;
-    CGFloat scaleHeight = CGRectGetHeight(self.frame) / self.contentSize.height;
-    CGFloat minScale = MIN(scaleWidth, scaleHeight);
-    minScale = MIN(minScale, 1.0); //in case the min scale > 1.0;
+    if (minScale == 0) {
+        CGFloat scaleWidth = CGRectGetWidth(self.frame) / self.contentSize.width;
+        CGFloat scaleHeight = CGRectGetHeight(self.frame) / self.contentSize.height;
+        minScale = MIN(scaleWidth, scaleHeight);
+        minScale = MIN(minScale, 1.0); //in case the min scale > 1.0;
+    }
+    if (maxScale == 0) {
+        maxScale = 1.0;
+    }
     self.minimumZoomScale = minScale;
-    self.maximumZoomScale = 1.0;
+    self.maximumZoomScale = maxScale;
     self.zoomScale = minScale;
     [self centerScrollViewContents];
+}
+
+- (void)tap:(UITapGestureRecognizer *)gestureRecognizer
+{
+    if ([self.delegate respondsToSelector:@selector(tapOnPhotoScrollView:gestureRecognizer:)]) {
+        [self.delegate tapOnPhotoScrollView:self gestureRecognizer:gestureRecognizer];
+    }
 }
 
 #pragma mark -

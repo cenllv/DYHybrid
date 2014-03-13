@@ -16,12 +16,23 @@
  Use SDWebImage to set image, refer to https://github.com/DYun/SDWebImage/blob/master/README.md
  */
 
+@protocol DYPhotoScrollViewDelegate <NSObject>
+
+@optional
+- (void)tapOnPhotoScrollView:(DYPhotoScrollView *)photScollView gestureRecognizer:(UITapGestureRecognizer *)gestureRecognizer;
+
+@end
 
 @interface DYPhotoScrollView : UIScrollView<UIScrollViewDelegate>
 
 //The image view will be zoomed
 @property (strong, nonatomic, readonly) UIImageView *zoomedImageView;
 
-- (void) displayImage:(UIImage *)image;
+@property (weak, nonatomic) id<DYPhotoScrollViewDelegate> delegate;
+
+//The defualt scale is calculate with the size of image;
+- (void)displayImage:(UIImage *)image;
+
+- (void)displayImage:(UIImage *)image minScale:(CGFloat)minScale maxScale:(CGFloat)maxScale;
 
 @end

@@ -25,6 +25,8 @@
 		D602A0A718C83D7500085152 /* DYConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D602A0A518C83D7500085152 /* DYConstant.m */; };
 		D622522B18672A0A00C5C909 /* DYCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = D622522918672A0A00C5C909 /* DYCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D622522C18672A0A00C5C909 /* DYCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D622522A18672A0A00C5C909 /* DYCalendarView.m */; };
+		D6378EA618D0195B00ABE9F4 /* UIImage+DYResize.h in Headers */ = {isa = PBXBuildFile; fileRef = D6378EA418D0195B00ABE9F4 /* UIImage+DYResize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6378EA718D0195B00ABE9F4 /* UIImage+DYResize.m in Sources */ = {isa = PBXBuildFile; fileRef = D6378EA518D0195B00ABE9F4 /* UIImage+DYResize.m */; };
 		D640446518C8DEB600FDC615 /* DYPanNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D640446318C8DEB600FDC615 /* DYPanNavigationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D640446618C8DEB600FDC615 /* DYPanNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D640446418C8DEB600FDC615 /* DYPanNavigationViewController.m */; };
 		D6BF8180184A20A000E64AED /* DYHybrid.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BF817F184A20A000E64AED /* DYHybrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +45,8 @@
 		D602A0A518C83D7500085152 /* DYConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYConstant.m; sourceTree = SOURCE_ROOT; };
 		D622522918672A0A00C5C909 /* DYCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCalendarView.h; sourceTree = SOURCE_ROOT; };
 		D622522A18672A0A00C5C909 /* DYCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCalendarView.m; sourceTree = SOURCE_ROOT; };
+		D6378EA418D0195B00ABE9F4 /* UIImage+DYResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DYResize.h"; sourceTree = SOURCE_ROOT; };
+		D6378EA518D0195B00ABE9F4 /* UIImage+DYResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DYResize.m"; sourceTree = SOURCE_ROOT; };
 		D640446318C8DEB600FDC615 /* DYPanNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYPanNavigationViewController.h; sourceTree = SOURCE_ROOT; };
 		D640446418C8DEB600FDC615 /* DYPanNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYPanNavigationViewController.m; sourceTree = SOURCE_ROOT; };
 		D68A2FD1184B03C2001B03C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6378EA318D0192900ABE9F4 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				D6378EA418D0195B00ABE9F4 /* UIImage+DYResize.h */,
+				D6378EA518D0195B00ABE9F4 /* UIImage+DYResize.m */,
+			);
+			name = category;
+			sourceTree = "<group>";
+		};
 		D6D016F2184A1C3A006BEF15 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +126,7 @@
 		D6D01704184A1C3A006BEF15 /* DYHybrid */ = {
 			isa = PBXGroup;
 			children = (
+				D6378EA318D0192900ABE9F4 /* category */,
 				D6FC944518535AFC009F41CA /* controller */,
 				D6D48DF3184A36D300A0B04B /* view */,
 				D6D48DF2184A36C500A0B04B /* util */,
@@ -170,6 +184,7 @@
 				D602A0A618C83D7500085152 /* DYConstant.h in Headers */,
 				D6D48DF6184A36F900A0B04B /* DYPhotoScrollView.h in Headers */,
 				D6C0912F18C97702004011AE /* DYLogUtil.h in Headers */,
+				D6378EA618D0195B00ABE9F4 /* UIImage+DYResize.h in Headers */,
 				D6D01714184A1E3F006BEF15 /* DYDateUtil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6378EA718D0195B00ABE9F4 /* UIImage+DYResize.m in Sources */,
 				D602A0A718C83D7500085152 /* DYConstant.m in Sources */,
 				D6D01712184A1C6F006BEF15 /* DYDateUtil.m in Sources */,
 				D640446618C8DEB600FDC615 /* DYPanNavigationViewController.m in Sources */,

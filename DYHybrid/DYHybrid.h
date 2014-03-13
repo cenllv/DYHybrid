@@ -20,3 +20,6 @@
 //view controller headers
 #import <DYHybrid/DYPanNavigationViewController.h>
 #import <DYHybrid/DYPhotoAlbumViewController.h>
+
+//category
+#import <DYHybrid/UIImage+DYResize.h>
