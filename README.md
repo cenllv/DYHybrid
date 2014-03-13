@@ -24,7 +24,9 @@ DYPhotoScrollView
 ----------------
 A photo viewer for zooming out and zooming in. The max zoom scale is immutable, set to 1. The min zoom scale is min(imageWidth/width, imageHeight/height), and of couse should not bigger than 1.0.
 <br/>
-Call resetViewLayoutAfterRotateOrientation for view controller rotate
+Call resetViewLayoutAfterRotateOrientation for view controller rotate</br>
+How to use:
+- 1. Init the DYPhotoScrollView and call - (void) displayImage:(UIImage *)image. You can call dispayImage multiple times with different images.
 
 DYCalendarView
 ================
@@ -32,4 +34,17 @@ A simple implementation of Calendar.
 
 DYPhotoAlbumViewController
 ==========================
-A photo view controller to display several images, scroll and paging.
+A photo view controller to display several images, scroll and paging.<br/>
+How to use:
+- 1. init the IBOutlet albumScrollView
+- 2. init show data `-(void)displayImages:(NSArray *)images currentPage:(NSInteger)currentPage`
+
+DYPanNavigationViewController
+=============================
+A custom navigation controller which support pan gesture backing to the previsou controller.
+How to use:
+- 1. The only thing you need to do is init your navigation controller as DYPanNavigationController
+
+
+
+
